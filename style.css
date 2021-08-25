@@ -1,0 +1,251 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* variables */
+:root {
+  --light-color: rgb(229, 230, 231);
+  --dark-color: #333;
+  --gold-color: #cb9b22;
+  --light-grey: rgb(209, 207, 207);
+}
+
+/* core styling */
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #fff;
+  height: 100vh;
+  color: var(--dark-color);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* navbar styling */
+#main-nav {
+  position: sticky;
+  background-color: #fff;
+  top: 0;
+  z-index: 1;
+}
+#main-nav .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main-nav a {
+  color: var(--dark-color);
+  padding: 0.75rem;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+#main-nav a.current {
+  background: var(--dark-color);
+  color: var(--gold-color);
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+#main-nav ul {
+  display: flex;
+  flex-direction: row;
+  margin-right: 1rem;
+  list-style: none;
+}
+
+#main-nav li {
+  margin-top: 5px;
+}
+
+#logo {
+  max-width: 80px;
+  max-height: 80px;
+  margin-left: 2rem;
+}
+
+#logo-text {
+  font-family: "Playball", cursive;
+}
+
+#main-nav h1 {
+  color: var(--gold-color);
+  font-weight: bold;
+  font-size: 5rem;
+  z-index: 1;
+}
+
+#main-nav h1 span {
+  color: rgb(8, 8, 8);
+  font-size: 2.5rem;
+}
+
+/* showcase styling */
+.pinstripe {
+  width: 100%;
+  height: 0.25rem;
+}
+
+#pinstripe-1 {
+  background-color: var(--gold-color);
+}
+
+#pinstripe-2 {
+  background-color: var(--dark-color);
+}
+.showcase-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+#showcase:before {
+  content: "";
+  background: rgb(8, 8, 8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+#showcase {
+  background: url("img/showcase.JPG") no-repeat center center/cover;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+/* card container styling */
+
+main .card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 75vw;
+}
+
+.card {
+  display: flex;
+  background-color: var(--light-color);
+  max-width: 35vw;
+  margin: 2rem 1rem 0 0;
+}
+
+/* gives all columns in card even sizing */
+.card > * {
+  flex-basis: 100%;
+}
+
+.card i {
+  display: block;
+}
+
+.card-header {
+  margin: 0.5rem;
+}
+
+.vehicle-features ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.vehicle-features ul li {
+  padding: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.vehicle-info i {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0.5rem 0 1.5rem;
+}
+
+/* footer styling */
+.footer-container {
+  background: var(--dark-color);
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.footer-container #logo-light {
+  padding: 2rem;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.footer-container ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-container li {
+  color: #fff;
+  padding: 1rem;
+  margin-right: 2rem;
+  list-style: none;
+}
+
+.footer-container li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* About page styling */
+
+#about-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.about-card > * {
+  flex-basis: 100%;
+}
+.about-showcase-container {
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 50vw;
+}
+
+.about-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0.25rem;
+}
+
+.about-card p {
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+.about-card img {
+  max-height: 475px;
+  max-width: 475px;
+}
