@@ -223,12 +223,17 @@ main .card-container {
 }
 .about-showcase-container {
   color: var(--dark-color);
-  background-color: var(--light-color);
+  margin: 1.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 50vw;
+  max-width: 60vw;
+}
+
+.about-showcase-container iframe{
+  margin-left: 40vw;
+  
 }
 
 .about-card {
@@ -238,6 +243,8 @@ main .card-container {
   height: 100%;
   width: 100%;
   padding: 0.25rem;
+  margin: 2rem 0;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .8);
 }
 
 .about-card p {
