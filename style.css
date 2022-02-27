@@ -111,7 +111,7 @@ img {
 
 #showcase:before {
   content: "";
-  background: rgba(8, 8, 8, 0.6);
+  background: rgba(8, 8, 8, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -253,7 +253,7 @@ main .card-container {
 }
 
 .about-showcase-container iframe {
-  margin-left: 40vw;
+  margin-left: 35;
 }
 
 .about-card {
@@ -264,15 +264,32 @@ main .card-container {
   width: 100%;
   padding: 0.25rem;
   margin: 2rem 0;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.8);
+  border-right: 0.25rem double var(--dark-color);
 }
 
-.about-card p {
+.about-card-2 > * {
+  flex-basis: 100%;
+}
+
+.about-card-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0.25rem;
+  margin: 2rem 0;
+  border-left: 0.25rem double var(--dark-color);
+}
+
+.about-card p,
+.about-card-2 p {
   font-size: 1.5rem;
   padding: 2rem;
 }
 
-.about-card img {
+.about-card img,
+.about-card-2 img {
   max-height: 475px;
   max-width: 475px;
 }
