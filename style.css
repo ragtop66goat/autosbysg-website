@@ -11,6 +11,7 @@
   --dark-color: #333;
   --gold-color: #cb9b22;
   --light-grey: rgb(209, 207, 207);
+  --navbar-margin: 15%;
 }
 
 /* core styling */
@@ -30,7 +31,7 @@ img {
   position: sticky;
   background-color: #fff;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 #main-nav .container {
   display: flex;
@@ -57,7 +58,7 @@ img {
 #main-nav ul {
   display: flex;
   flex-direction: row;
-  margin-right: 1rem;
+  margin-right: var(--navbar-margin);
   list-style: none;
 }
 
@@ -68,7 +69,7 @@ img {
 #logo {
   max-width: 80px;
   max-height: 80px;
-  margin-left: 2rem;
+  margin: 1.5% var(--navbar-margin);
 }
 
 #logo-text {
@@ -87,10 +88,10 @@ img {
   font-size: 2.5rem;
 }
 
-/* showcase styling */
+/*--------- showcase styling -------------*/
 .pinstripe {
   width: 100%;
-  height: 0.25rem;
+  height: 0.5rem;
 }
 
 #pinstripe-1 {
@@ -102,6 +103,7 @@ img {
 }
 .showcase-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 70vh;
@@ -109,13 +111,12 @@ img {
 
 #showcase:before {
   content: "";
-  background: rgb(8, 8, 8);
+  background: rgba(8, 8, 8, 0.6);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
 }
 
 #showcase {
@@ -124,7 +125,27 @@ img {
   height: 100%;
   width: 100%;
 }
-/* card container styling */
+
+#showcase h1 {
+  color: var(--gold-color);
+  font-weight: bold;
+  font-size: 8rem;
+  z-index: 1;
+  text-shadow: 3px 3px 0px var(--light-color), 6px 6px 0px var(--dark-color);
+}
+
+#showcase h1 span {
+  color: var(--light-color);
+  font-size: 4rem;
+  text-shadow: 2px 2px 0px var(--gold-color);
+}
+
+#showcase p {
+  color: var(--light-grey);
+  font-size: 2rem;
+  z-index: 1;
+}
+/*---------- card container styling ---------------*/
 
 main .card-container {
   display: flex;
@@ -173,7 +194,7 @@ main .card-container {
   margin: 1rem 0.5rem 0 1.5rem;
 }
 
-/* footer styling */
+/*--------- footer styling -------------*/
 .footer-container {
   background: var(--dark-color);
   color: #fff;
@@ -207,7 +228,7 @@ main .card-container {
   text-decoration: none;
 }
 
-/* About page styling */
+/*------------- About page styling -------------*/
 
 #about-showcase {
   display: flex;
@@ -231,9 +252,8 @@ main .card-container {
   max-width: 60vw;
 }
 
-.about-showcase-container iframe{
+.about-showcase-container iframe {
   margin-left: 40vw;
-  
 }
 
 .about-card {
@@ -244,7 +264,7 @@ main .card-container {
   width: 100%;
   padding: 0.25rem;
   margin: 2rem 0;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .8);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.8);
 }
 
 .about-card p {
