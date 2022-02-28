@@ -12,6 +12,9 @@
   --gold-color: #cb9b22;
   --light-grey: rgb(209, 207, 207);
   --navbar-margin: 15%;
+  --carousel-img-size: 400px;
+  --carousel-card-width: 450px;
+  --carousel-card-height: 430px;
 }
 
 /* core styling */
@@ -74,6 +77,11 @@ img {
 
 #logo-text {
   font-family: "Playball", cursive;
+  text-shadow: 3px 3px 0 var(--dark-color);
+}
+
+#logo-text span {
+  text-shadow: none;
 }
 
 #main-nav h1 {
@@ -91,7 +99,7 @@ img {
 /*--------- showcase styling -------------*/
 .pinstripe {
   width: 100%;
-  height: 0.5rem;
+  height: 1rem;
 }
 
 #pinstripe-1 {
@@ -145,6 +153,65 @@ img {
   font-size: 2rem;
   z-index: 1;
 }
+
+/*---------- carousel styling --------------------*/
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+
+#carousel-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--carousel-card-width);
+  height: var(--carousel-card-height);
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  margin-top: 2%;
+}
+.carousel {
+  height: var(--carousel-img-size);
+  width: var(--carousel-img-size);
+  overflow: hidden;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.carousel h1 {
+  margin: 2%;
+}
+
+.image-container {
+  display: flex;
+  transform: translateX(0);
+  transition: 0.5s ease-in-out;
+}
+
+.image-container img {
+  height: var(--carousel-img-size);
+  width: var(--carousel-img-size);
+  object-fit: cover;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin-top: 1%;
+}
+
+.btn {
+  background-color: var(--gold-color);
+  color: var(--light-color);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 40%;
+}
+
 /*---------- card container styling ---------------*/
 
 main .card-container {
@@ -202,24 +269,26 @@ main .card-container {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .footer-container #logo-light {
-  padding: 2rem;
-  max-width: 150px;
-  max-height: 150px;
+  padding: 1rem;
+  max-width: 100px;
+  max-height: 100px;
+  margin-left: var(--navbar-margin);
 }
 
 .footer-container ul {
   display: flex;
   flex-direction: row;
+  margin-right: var(--navbar-margin);
 }
 
 .footer-container li {
   color: #fff;
   padding: 1rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
   list-style: none;
 }
 
@@ -253,7 +322,8 @@ main .card-container {
 }
 
 .about-showcase-container iframe {
-  margin-left: 35;
+  margin-left: 70%;
+  outline: 0.25rem solid var(--dark-color);
 }
 
 .about-card {

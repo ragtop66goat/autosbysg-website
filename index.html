@@ -1,56 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Lato|Staatliches" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css">
-  <title>S&G Auto Sales</title>
-</head>
-<body>
-  <!--  Designed my logo at LogoMakr.com 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato|Staatliches"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playball&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>S&G Auto Sales</title>
+  </head>
+  <body>
+    <!--  Designed my logo at LogoMakr.com 
    navbar-->
-  <nav id="main-nav">
-    <div class="container">
-      <div id="logo"><img src="img/logo.png" alt=""></div>
-      <ul>
-        <li><a class="current" href="#">Home</a></li>
-        <li><a href="inventory.html">Inventory</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-  </nav>
-  
-  <main>
-    <!-- showcase markup -->
-    <div id="pinstripe-1" class="pinstripe"></div>
-    <div id="pinstripe-2" class="pinstripe"></div>
-
-    <header id="showcase">
-      <div class="showcase-container">
-        <h1 id="logo-text">S-G<span>AutoSales</span></h1> 
-        <p>Stop in and test drive your new car today</p>
+    <nav id="main-nav">
+      <div class="container">
+        <div id="logo"><img src="img/logo.png" alt="" /></div>
+        <ul>
+          <li><a class="current" href="#">Home</a></li>
+          <li><a href="inventory.html">Inventory</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
       </div>
-    </header>
+    </nav>
 
-    <div id="pinstripe-2" class="pinstripe"></div>
-    <div id="pinstripe-1" class="pinstripe"></div>
+    <main>
+      <!-- showcase markup -->
+      <div id="pinstripe-1" class="pinstripe"></div>
+      <div id="pinstripe-2" class="pinstripe"></div>
 
-    
-    <!-- footer styling  Designed my logo at LogoMakr.com -->
-      <footer id="main-footer">
-        <div class="footer-container">
-          <div id="logo-light"><img src="img/logoLight.png"></div>
-          <p>POWERED BY RAGTOP MEDIA</p>
-          <ul>
-            <li><a href="about.html">About</a></li>
-          </ul>
+      <header id="showcase">
+        <div class="showcase-container">
+          <h1 id="logo-text">S-G<span>AutoSales</span></h1>
+          <p>Stop in and test drive your new car today</p>
         </div>
-      </footer>
+      </header>
 
-  <script src="app.js"></script>
-</body>
+      <div id="pinstripe-2" class="pinstripe"></div>
+      <div id="pinstripe-1" class="pinstripe"></div>
+
+      <!-- Carousel for the images -->
+      <div class="carousel-container">
+        <h1>This weeks highlighted additions</h1>
+        <div id="carousel-card">
+          <div class="carousel">
+            <div class="image-container" id="images">
+              <img src="img/1994-pontiac-grand-am-se-4dr-sedan.jpg" alt="" />
+              <img src="img/1997-saturn-s-series-sl2-4dr-sedan.jpg" alt="" />
+              <img src="img/2000-oldsmobile-alero-gl-4dr-sedan.jpg" alt="" />
+              <img
+                src="img/2001-chevrolet-cavalier-base-2dr-coupe.jpg"
+                alt=""
+              />
+              <img src="img/2001-honda-cr-v-ex-awd-4dr-suv.jpg" alt="" />
+              <img src="img/2002-chevrolet-malibu-base-4dr-sedan.jpg" alt="" />
+              <img src="img/2002-pontiac-sunfire-se-4dr-sedan.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons for the carousel -->
+        <div class="buttons-container">
+          <button id="left" class="btn">Prev</button>
+          <button id="right" class="btn">Next</button>
+        </div>
+      </div>
+    </main>
+    <!-- footer styling  Designed my logo at LogoMakr.com -->
+    <footer id="main-footer">
+      <div class="footer-container">
+        <div id="logo-light"><img src="img/logoLight.png" /></div>
+        <p>POWERED BY RAGTOP MEDIA</p>
+        <ul>
+          <li><a href="inventory.html">Inventory</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
 </html>
