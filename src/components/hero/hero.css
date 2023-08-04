@@ -3,7 +3,7 @@
     font-weight: bold;
     font-family: "Playball", cursive;
     font-size: calc(9.6vw);
-    text-shadow: 3px 3px 0px var(--light-color), 6px 6px 0px var(--dark-color);
+    text-shadow: 3px 3px 0 var(--light-color), 6px 6px 0 var(--dark-color);
     z-index: 1;
 }
 
