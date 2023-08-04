@@ -1,0 +1,11 @@
+.main-nav a {
+    color: var(--dark-color);
+    padding: 0.75rem;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.current {
+    border-bottom: solid 2px var(--gold-color);
+}

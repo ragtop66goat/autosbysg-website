@@ -1,5 +1,21 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-color: rgb(229, 230, 231);
+  --dark-color: #333;
+  --gold-color: #cb9b22;
+  --light-grey: rgb(209, 207, 207);
+  --navbar-margin: 15%;
+  --carousel-img-size: 400px;
+  --carousel-card-width: 450px;
+  --carousel-card-height: 430px;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +26,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.pinstripe-1 {
+  width: 100%;
+  height: 1rem;
+  background-color: var(--gold-color);
+}
+
+.pinstripe-2 {
+  width: 100%;
+  height: 1rem;
+  background-color: var(--dark-color);
 }

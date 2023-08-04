@@ -1,0 +1,42 @@
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+    border-bottom: solid 1px var(--gold-color);
+}
+
+.about-item-lg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 100px;
+    min-height: 400px;
+    flex: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 4px var(--dark-color);
+}
+
+.item-1 {
+    background-image: url("../../img/about.JPG");
+}
+
+.item-2 {
+   background-image: url("../../img/about2.JPG");
+}
+
+.item-3 {
+  background-image: url("../../img/about3.JPG");
+}
+
+.about-item-sm {
+    flex: 20%;
+    margin: 2rem;
+}
+
+.i-frame {
+    margin: 2rem;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
