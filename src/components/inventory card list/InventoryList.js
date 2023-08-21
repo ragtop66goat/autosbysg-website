@@ -7,7 +7,7 @@ export function InventoryList() {
 
     const inventoryContext = useContext(InventoryContext);
     const getInventoryData = () => inventoryContext.getInventoryData();
-    let inventory;
+    const inventory = inventoryContext.inventory;
 
     useEffect(() => {
       getInventoryData();
