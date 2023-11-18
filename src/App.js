@@ -14,13 +14,13 @@ function App() {
             <Router>
                 <CurrentPageProvider>
                     <InventoryProvider>
-                        <NavBarComponent/>
+                        <NavBarComponent data-testid="navbar"/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/inventory" element={<Inventory/>}/>
                             <Route path="/about" element={<About/>}/>
                         </Routes>
-                        <Footer/>
+                        <Footer data-testid="footer"/>
                     </InventoryProvider>
                 </CurrentPageProvider>
             </Router>

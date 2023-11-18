@@ -10,7 +10,7 @@ export function Footer(){
     const pageContext = useContext(CurrentPageContext);
 
     return (
-        <div className="footer">
+        <div data-testid="footer" className="footer">
         <Container>
             <div className="d-flex justify-content-between align-items-baseline">
                 <div>
