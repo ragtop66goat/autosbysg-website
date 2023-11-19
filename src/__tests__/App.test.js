@@ -4,7 +4,7 @@ import App from '../App';
 
 describe("App Component Tests", () => {
 
-  test("should render Hero, NavBar, and Footer components", () => {
+  it("should render Hero, NavBar, and Footer components", () => {
 
     render(<App />);
 

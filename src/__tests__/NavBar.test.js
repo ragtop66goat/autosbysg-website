@@ -1,5 +1,5 @@
 import {screen, render, fireEvent} from '@testing-library/react';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, MemoryRouter} from "react-router-dom";
 import '@testing-library/jest-dom/extend-expect'; // for additional matchers
 import {NavBarComponent} from "../components/navbar/NavBarComponent";
 import {CurrentPageContext} from "../context/CurrentPage";
@@ -137,5 +137,57 @@ describe("NavBarComponent tests", () => {
 
     expect(mockContext.setPage).toHaveBeenCalledWith(2);
   });
+
+  test("should navigate to '/home' when 'Home' link is clicked", () => {
+
+    const mockContext = {
+      page: 0,
+      setPage: jest.fn()
+    };
+
+    render(<MemoryRouter initialEntries={['/']}>
+      <CurrentPageContext.Provider value={mockContext}>
+        <NavBarComponent/>
+      </CurrentPageContext.Provider>
+    </MemoryRouter>)
+
+    fireEvent.click(screen.getByTestId("home"));
+    expect(screen.getByTestId("home")).toHaveAttribute('href', '/')
+  })
+
+  test("should navigate to '/inventory' when 'Inventory' link is clicked", () => {
+
+    const mockContext = {
+      page: 0,
+      setPage: jest.fn()
+    };
+
+    render(<MemoryRouter initialEntries={['/']}>
+      <CurrentPageContext.Provider value={mockContext}>
+        <NavBarComponent/>
+      </CurrentPageContext.Provider>
+    </MemoryRouter>)
+
+    fireEvent.click(screen.getByTestId("inventory"));
+    expect(screen.getByTestId("inventory")).toHaveAttribute('href', '/inventory');
+
+  })
+
+  test("should navigate to '/about' when 'About' link is clicked", () => {
+
+    const mockContext = {
+      page: 0,
+      setPage: jest.fn()
+    };
+
+    render(<MemoryRouter initialEntries={['/']}>
+      <CurrentPageContext.Provider value={mockContext}>
+        <NavBarComponent/>
+      </CurrentPageContext.Provider>
+    </MemoryRouter>)
+
+    fireEvent.click(screen.getByTestId("about"));
+    expect(screen.getByTestId("about")).toHaveAttribute('href', '/about');
+  })
 
 });

@@ -16,11 +16,11 @@ export function Footer(){
                 <div>
                 <img src={logo} alt="LightLogo"/>
                 </div>
-                <p style={{color: "white"}}>POWERED BY RAGTOP MEDIA</p>
+                <p data-testid="brand-trademark" style={{color: "white"}}>POWERED BY RAGTOP MEDIA</p>
                 <div className="footer-nav">
-                    <Link className={pageContext.page === 0 ? "footer-current" : "" } onClick={()=>pageContext.setPage(0)} to="/">Home</Link>
-                    <Link className={pageContext.page === 1 ? "footer-current" : ""} onClick={()=>pageContext.setPage(1)} to="/inventory">Inventory</Link>
-                    <Link className={pageContext.page === 2 ? "footer-current" : ""} onClick={()=>pageContext.setPage(2)} to="/about">About</Link>
+                    <Link data-testid="footer-home" className={pageContext.page === 0 ? "footer-current" : "" } onClick={()=>pageContext.setPage(0)} to="/">Home</Link>
+                    <Link data-testid="footer-inventory" className={pageContext.page === 1 ? "footer-current" : ""} onClick={()=>pageContext.setPage(1)} to="/inventory">Inventory</Link>
+                    <Link data-testid="footer-about" className={pageContext.page === 2 ? "footer-current" : ""} onClick={()=>pageContext.setPage(2)} to="/about">About</Link>
                 </div>
             </div>
         </Container>
