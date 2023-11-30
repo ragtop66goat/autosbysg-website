@@ -24,16 +24,16 @@ export function Carousel({data}) {
         <>
             <h1 className="mt-5">Check out this weeks highlights</h1>
         <div className="carousel">
-            <BsArrowLeftCircleFill className="arrow arrow-left" onClick={leftArrow}/>
+            <BsArrowLeftCircleFill data-testid="left-arrow" className="arrow arrow-left" onClick={leftArrow}/>
            <CarouselItem key={slide} item={item}/>
-            <BsArrowRightCircleFill className="arrow arrow-right" onClick={rightArrow}/>
+            <BsArrowRightCircleFill data-testid="right-arrow" className="arrow arrow-right" onClick={rightArrow}/>
         </div>
             <div className="indicators">
                 {data.map((item, idx) => (
                     <button onClick={()=>setSlide(idx)} className={idx === slide ? "indicator-current" : "indicator"} key={idx}></button>
                 ))}
             </div>
-            <Link className="carousel-link" onClick={()=>pageContext.setPage(1)} to="/inventory">See Full Inventory</Link>
+            <Link data-testid="inventory-link" className="carousel-link" onClick={()=>pageContext.setPage(1)} to="/inventory">See Full Inventory</Link>
 
         </>
     )
