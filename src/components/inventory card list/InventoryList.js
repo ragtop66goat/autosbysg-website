@@ -1,4 +1,4 @@
-import {InventoryCard} from "../inventory card/InventoryCard";
+import InventoryCard from "../inventory card/InventoryCard";
 import {Container} from "react-bootstrap";
 import {useContext, useEffect} from "react";
 import {InventoryContext} from "../../context/Inventory";

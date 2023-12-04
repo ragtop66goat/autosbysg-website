@@ -1,9 +1,9 @@
-import {Hero} from "../../components/hero/Hero";
-import {Carousel} from "../../components/carousel/Carousel";
+import Hero from "../../components/hero/Hero";
+import Carousel from "../../components/carousel/Carousel";
 import { cars } from "../../data/carouselData";
 import "./home.css";
 
-export function Home(){
+function Home(){
     return(
         <div className="home">
             <Hero/>
@@ -11,3 +11,5 @@ export function Home(){
         </div>
     )
 }
+
+export default Home;

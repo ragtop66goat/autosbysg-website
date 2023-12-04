@@ -5,12 +5,12 @@ import {useContext} from "react";
 import "./footer.css";
 import {CurrentPageContext} from "../../context/CurrentPage";
 
-export function Footer(){
+function Footer(){
 
     const pageContext = useContext(CurrentPageContext);
 
     return (
-        <div data-testid="footer" className="footer">
+        <div className="footer">
         <Container>
             <div className="d-flex justify-content-between align-items-baseline">
                 <div>
@@ -27,3 +27,5 @@ export function Footer(){
         </div>
     )
 }
+
+export default Footer;

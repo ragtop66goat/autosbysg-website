@@ -5,7 +5,7 @@ import {CarouselItem} from "../carousel item/CarouselItem";
 import {Link} from "react-router-dom";
 import {CurrentPageContext} from "../../context/CurrentPage";
 
-export function Carousel({data}) {
+function Carousel({data}) {
     const pageContext = useContext(CurrentPageContext);
 
     const [slide, setSlide] = useState(0);
@@ -38,3 +38,5 @@ export function Carousel({data}) {
         </>
     )
 }
+
+export default Carousel;

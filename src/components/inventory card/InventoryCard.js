@@ -2,7 +2,7 @@ import {LiaTachometerAltSolid} from "react-icons/lia";
 import {PiEngineDuotone} from "react-icons/pi";
 import {BsCurrencyDollar} from "react-icons/bs";
 
-export function InventoryCard({item}) {
+function InventoryCard({item}) {
     return (
         <div className="col">
             <div className="card h-100 p-2">
@@ -14,8 +14,8 @@ export function InventoryCard({item}) {
                     <p className="card.text"><PiEngineDuotone className="m-1"/>{item?.engine} </p>
                 </div>
                 <div className="card-footer">
-                    {item.options?.map((option) => (
-                        <small className="text-muted">{" | " + option}</small>
+                    {item.options?.map((option, idx) => (
+                        <small key={idx} className="text-muted">{" | " + option}</small>
                     ))
                     }
                 </div>
@@ -23,3 +23,5 @@ export function InventoryCard({item}) {
         </div>
     )
 }
+
+export default InventoryCard;

@@ -5,7 +5,7 @@ import "./navbarComponent.css";
 import {useContext} from "react";
 import {CurrentPageContext} from "../../context/CurrentPage";
 
-export function NavBarComponent(){
+function NavBarComponent(){
     const pageContext = useContext(CurrentPageContext);
 
     return (
@@ -30,3 +30,5 @@ export function NavBarComponent(){
         </div>
     )
 }
+
+export default NavBarComponent;
