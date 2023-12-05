@@ -1,6 +1,6 @@
 import {render, screen} from "@testing-library/react";
 import {InventoryContext} from "../context/Inventory";
-import {InventoryList} from "../components/inventory card list/InventoryList";
+import InventoryList from "../components/inventory card list/InventoryList";
 
 
 const customRender = (ui, {providerProps, ...renderOptions}) => {

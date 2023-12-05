@@ -1,27 +1,27 @@
 import {Container} from "react-bootstrap";
 import "./about.css"
 
-export function About() {
+function About() {
     return (
         <Container>
             <h1 className="m-5">About Us</h1>
             <div className="d-flex flex-column justify-content-center">
                 <div className="about-container">
                     <div className="about-item-lg item-1"></div>
-                    <div className="about-item-sm">Currently owned and operated by Sam and Mike,<br/>
+                    <div data-testid="summary1" className="about-item-sm">Currently owned and operated by Sam and Mike,<br/>
                         <strong>S-G Auto Sales</strong> has been a family owned business
                         for over 60 years.
                     </div>
                 </div>
                 <div className="about-container">
-                    <div className="about-item-sm">Since 1962, the sign in front of the building, and the building
+                    <div data-testid="summary2" className="about-item-sm">Since 1962, the sign in front of the building, and the building
                         itself for that matter, may have had a facelift or two,
                     </div>
                     <div className="about-item-lg item-2"></div>
                 </div>
                 <div className="about-container">
                     <div className="about-item-lg item-3"></div>
-                    <div className="about-item-sm">but Mike and Sam are still there, and you don't stay in business
+                    <div data-testid="summary3" className="about-item-sm">but Mike and Sam are still there, and you don't stay in business
                         on the same corner all this time without treating people the right
                         way.
                     </div>
@@ -38,3 +38,5 @@ export function About() {
         </Container>
     )
 }
+
+export default About;

@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import NavBarComponent from "./components/navbar/NavBarComponent";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
-import {Inventory} from "./pages/inventory/Inventory";
-import {About} from "./pages/about/About";
+import Inventory from "./pages/inventory/Inventory";
+import About from "./pages/about/About";
 import CurrentPageProvider from "./context/CurrentPage";
 import InventoryProvider from "./context/Inventory";
 
