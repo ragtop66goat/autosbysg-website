@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react";
-import {InventoryCard} from "../components/inventory card/InventoryCard";
+import InventoryCard from "../components/inventory card/InventoryCard";
 import '@testing-library/jest-dom/extend-expect';
 
 describe("InventoryCard component tests", () => {

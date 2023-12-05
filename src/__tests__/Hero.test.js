@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import {Hero} from "../components/hero/Hero";
+import Hero from "../components/hero/Hero";
 
 describe("Hero Tests", () => {
 

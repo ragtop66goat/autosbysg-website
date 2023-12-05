@@ -1,7 +1,7 @@
 import {screen, render, fireEvent} from '@testing-library/react';
 import {BrowserRouter, MemoryRouter} from "react-router-dom";
 import '@testing-library/jest-dom/extend-expect'; // for additional matchers
-import {NavBarComponent} from "../components/navbar/NavBarComponent";
+import NavBarComponent from "../components/navbar/NavBarComponent";
 import {CurrentPageContext} from "../context/CurrentPage";
 
 describe("NavBarComponent tests", () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, render, screen} from "@testing-library/react";
-import {Carousel} from "../components/carousel/Carousel";
+import Carousel from "../components/carousel/Carousel";
 import {BrowserRouter, MemoryRouter} from "react-router-dom";
 import {CurrentPageContext} from "../context/CurrentPage";
 import '@testing-library/jest-dom/extend-expect';

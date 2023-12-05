@@ -2,7 +2,7 @@ import {screen, render, fireEvent} from '@testing-library/react';
 import {BrowserRouter, MemoryRouter} from "react-router-dom";
 import '@testing-library/jest-dom/extend-expect';
 import {CurrentPageContext} from "../context/CurrentPage";
-import {Footer} from "../components/footer/Footer";
+import Footer from "../components/footer/Footer";
 
 describe("Footer Tests", () => {
 
