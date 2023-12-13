@@ -1,5 +1,5 @@
 import React from 'react';
-import {fireEvent, render, screen, waitFor} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import {InventoryContext, InventoryProvider} from "../context/Inventory";
 import '@testing-library/jest-dom/extend-expect';
 
