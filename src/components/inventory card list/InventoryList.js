@@ -1,9 +1,9 @@
-import {InventoryCard} from "../inventory card/InventoryCard";
+import InventoryCard from "../inventory card/InventoryCard";
 import {Container} from "react-bootstrap";
 import {useContext, useEffect} from "react";
 import {InventoryContext} from "../../context/Inventory";
 
-export function InventoryList() {
+function InventoryList() {
 
     const inventoryContext = useContext(InventoryContext);
     const getInventoryData = () => inventoryContext.getInventoryData();
@@ -25,3 +25,5 @@ export function InventoryList() {
         </Container>
     )
 }
+
+export default InventoryList

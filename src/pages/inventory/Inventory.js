@@ -1,9 +1,11 @@
-import {InventoryList} from "../../components/inventory card list/InventoryList";
+import InventoryList from "../../components/inventory card list/InventoryList";
 
-export function Inventory(){
+function Inventory(){
     return (
         <div className="m-4">
             <InventoryList/>
         </div>
     )
 }
+
+export default Inventory;
