@@ -1,19 +1,24 @@
-import {render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import InventoryCard from "../components/inventory card/InventoryCard";
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
 describe("InventoryCard component tests", () => {
-
   test("should render all values of the item passed to it", () => {
     const mockItem = {
+      id: "test-id",
       title: "car",
       price: "20",
       miles: "100",
       engine: "v-8",
-      options:["windows", "wheels"]
+      options: ["windows", "wheels"],
     };
 
-    render(<InventoryCard item={mockItem}/>);
+    render(
+      <BrowserRouter>
+        <InventoryCard item={mockItem} />
+      </BrowserRouter>
+    );
 
     expect(screen.getByText("car")).toBeInTheDocument();
     expect(screen.getByAltText("car")).toBeInTheDocument();
@@ -22,6 +27,5 @@ describe("InventoryCard component tests", () => {
     expect(screen.getByText("v-8")).toBeInTheDocument();
     expect(screen.getByText("| windows")).toBeInTheDocument();
     expect(screen.getByText("| wheels")).toBeInTheDocument();
-
-  })
-})
+  });
+});
