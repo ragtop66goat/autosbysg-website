@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import Inventory from "./pages/inventory/Inventory";
 import About from "./pages/about/About";
+import VehicleDetail from "./pages/vehicle-detail/VehicleDetail";
 import CurrentPageProvider from "./context/CurrentPage";
 import InventoryProvider from "./context/Inventory";
 
@@ -18,6 +19,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/inventory" element={<Inventory/>}/>
+                            <Route path="/inventory/:id" element={<VehicleDetail/>}/>
                             <Route path="/about" element={<About/>}/>
                         </Routes>
                         <Footer/>

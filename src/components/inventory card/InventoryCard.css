@@ -1,0 +1,19 @@
+.inventory-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.inventory-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.inventory-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.inventory-card-link:hover {
+    text-decoration: none;
+}
