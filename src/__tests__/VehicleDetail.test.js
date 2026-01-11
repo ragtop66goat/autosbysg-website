@@ -42,7 +42,7 @@ describe("VehicleDetail Component", () => {
     jest.clearAllMocks();
   });
 
-  test("renders vehicle detail page with correct information", async () => {
+  it("should render vehicle detail page with correct information", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -53,7 +53,7 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("displays breadcrumb navigation", async () => {
+  it("shoulddisplay breadcrumb navigation", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -65,14 +65,14 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("shows loading spinner when vehicle is not yet loaded", () => {
+  it("should display a loading spinner when vehicle is not loaded", () => {
     const emptyContextValue = {
       inventory: [],
       getInventoryData: jest.fn(),
     };
 
     render(
-      <MemoryRouter initialEntries={["/inventory/test-vehicle-1"]}>
+      <MemoryRouter initialEntries={["/inventory/it-vehicle-1"]}>
         <InventoryContext.Provider value={emptyContextValue}>
           <Routes>
             <Route path="/inventory/:id" element={<VehicleDetail />} />
@@ -84,7 +84,7 @@ describe("VehicleDetail Component", () => {
     expect(screen.getByRole("status")).toBeInTheDocument();
   });
 
-  test("displays all vehicle features and options", async () => {
+  it("should display all vehicle features and options", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -94,7 +94,7 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("displays contact form when button is clicked", async () => {
+  it("should display a contact form when button is clicked", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -108,7 +108,7 @@ describe("VehicleDetail Component", () => {
     expect(screen.getByLabelText(/Message/i)).toBeInTheDocument();
   });
 
-  test("hides contact form when hide button is clicked", async () => {
+  it("should hide the contact form when hide button is clicked", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -122,7 +122,7 @@ describe("VehicleDetail Component", () => {
     expect(screen.queryByLabelText(/Name \*/i)).not.toBeInTheDocument();
   });
 
-  test("handles contact form submission", async () => {
+  it("should handle contact form submission", async () => {
     window.alert = jest.fn();
     renderWithRouter(<VehicleDetail />);
 
@@ -146,19 +146,19 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("displays call button with correct phone number", async () => {
+  it("should display a call button with correct phone number", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
       const callButton = screen.getByText(/Call Us:/i);
       expect(callButton.closest("a")).toHaveAttribute(
         "href",
-        "tel:+12165353566"
+        "tel:+12162816432"
       );
     });
   });
 
-  test("displays back to inventory button", async () => {
+  it("should display back to inventory button", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -166,7 +166,7 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("changes image when thumbnail is clicked", async () => {
+  it("should change image when thumbnail is clicked", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -184,14 +184,14 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("calls getInventoryData when inventory is empty", () => {
+  it("should call getInventoryData when inventory is empty", () => {
     const emptyContextValue = {
       inventory: [],
       getInventoryData: jest.fn(),
     };
 
     render(
-      <MemoryRouter initialEntries={["/inventory/test-vehicle-1"]}>
+      <MemoryRouter initialEntries={["/inventory/it-vehicle-1"]}>
         <InventoryContext.Provider value={emptyContextValue}>
           <Routes>
             <Route path="/inventory/:id" element={<VehicleDetail />} />
@@ -203,7 +203,7 @@ describe("VehicleDetail Component", () => {
     expect(emptyContextValue.getInventoryData).toHaveBeenCalled();
   });
 
-  test("displays company information section", async () => {
+  it("should display company information section", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
@@ -214,7 +214,7 @@ describe("VehicleDetail Component", () => {
     });
   });
 
-  test("updates form input values correctly", async () => {
+  it("should update form input values correctly", async () => {
     renderWithRouter(<VehicleDetail />);
 
     await waitFor(() => {
