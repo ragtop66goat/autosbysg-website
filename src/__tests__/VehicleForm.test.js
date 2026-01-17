@@ -22,7 +22,7 @@ describe("VehicleForm Component", () => {
     expect(screen.getByLabelText(/price/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/mileage/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/engine/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/image url/i)).toBeInTheDocument();
+    expect(screen.getByText(/vehicle image/i)).toBeInTheDocument();
   });
 
   it("should display 'Add Vehicle' heading when no initial data", () => {
@@ -96,9 +96,17 @@ describe("VehicleForm Component", () => {
   });
 
   it("should call onSubmit with form data", async () => {
+    const initialData = {
+      title: "",
+      price: "",
+      miles: "",
+      engine: "",
+      image: "/cars/test.jpg", // Provide initial image
+    };
+
     render(
       <BrowserRouter>
-        <VehicleForm onSubmit={mockOnSubmit} onCancel={mockOnCancel} />
+        <VehicleForm onSubmit={mockOnSubmit} onCancel={mockOnCancel} initialData={initialData} />
       </BrowserRouter>
     );
 
@@ -162,9 +170,17 @@ describe("VehicleForm Component", () => {
       () => new Promise((resolve) => setTimeout(resolve, 1000))
     );
 
+    const initialData = {
+      title: "2020 Honda Accord",
+      price: "25000",
+      miles: "30000",
+      engine: "2.0L I-4",
+      image: "/cars/honda.jpg",
+    };
+
     render(
       <BrowserRouter>
-        <VehicleForm onSubmit={slowSubmit} onCancel={mockOnCancel} />
+        <VehicleForm onSubmit={slowSubmit} onCancel={mockOnCancel} initialData={initialData} />
       </BrowserRouter>
     );
 
@@ -175,7 +191,9 @@ describe("VehicleForm Component", () => {
     const submitButton = screen.getByRole("button", { name: /save/i });
     fireEvent.click(submitButton);
 
-    expect(screen.getByText(/saving/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/saving/i)).toBeInTheDocument();
+    });
     expect(submitButton).toBeDisabled();
   });
 });

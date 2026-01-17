@@ -105,6 +105,16 @@
   background-color: #545b62;
 }
 
+.upload-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   .vehicle-form-container {
     padding: 1rem;

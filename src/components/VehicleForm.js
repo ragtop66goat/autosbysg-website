@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ImageUpload from "./ImageUpload";
+import { uploadVehicleImage, generateImageId } from "../utils/imageUpload";
 import "./VehicleForm.css";
 
 function VehicleForm({ onSubmit, onCancel, initialData = null }) {
@@ -11,6 +13,8 @@ function VehicleForm({ onSubmit, onCancel, initialData = null }) {
     options: initialData?.options?.join(", ") || "",
   });
   const [loading, setLoading] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [uploadError, setUploadError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,21 +24,50 @@ function VehicleForm({ onSubmit, onCancel, initialData = null }) {
     }));
   };
 
+  const handleImageSelect = (file) => {
+    setImageFile(file);
+    setUploadError("");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setUploadError("");
 
     try {
+      let imageUrl = formData.image;
+
+      // If a new image file was selected, upload it
+      if (imageFile) {
+        try {
+          // Generate UUID for new image
+          const uuid = initialData?.uuid || generateImageId();
+          imageUrl = await uploadVehicleImage(imageFile, uuid);
+        } catch (uploadError) {
+          setUploadError(uploadError.message);
+          setLoading(false);
+          return;
+        }
+      }
+
+      // Validate that we have an image (either uploaded or existing)
+      if (!imageUrl) {
+        setUploadError("Please select an image");
+        setLoading(false);
+        return;
+      }
+
       const vehicleData = {
         ...formData,
+        image: imageUrl,
         options: formData.options
           ? formData.options.split(",").map((opt) => opt.trim())
           : [],
       };
+
       await onSubmit(vehicleData);
     } catch (error) {
       console.error("Form submission error:", error);
-    } finally {
       setLoading(false);
     }
   };
@@ -116,25 +149,17 @@ function VehicleForm({ onSubmit, onCancel, initialData = null }) {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="image">
-            Image URL <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="image"
-            name="image"
-            className="form-control"
-            value={formData.image}
-            onChange={handleChange}
-            placeholder="/cars/vehicle-image.jpg"
-            required
-            disabled={loading}
-          />
-          <small className="form-text">
-            For now, use a path to an image in the public/cars folder
-          </small>
-        </div>
+        <ImageUpload
+          onImageSelect={handleImageSelect}
+          currentImageUrl={formData.image}
+          disabled={loading}
+        />
+
+        {uploadError && (
+          <div className="upload-error">
+            {uploadError}
+          </div>
+        )}
 
         <div className="form-group">
           <label htmlFor="options">Options & Features</label>
