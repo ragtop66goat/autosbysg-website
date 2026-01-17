@@ -8,6 +8,9 @@ import About from "./pages/about/About";
 import VehicleDetail from "./pages/vehicle-detail/VehicleDetail";
 import Login from "./pages/login/Login";
 import Admin from "./pages/admin/Admin";
+import AdminInventory from "./pages/admin/AdminInventory";
+import AddVehicle from "./pages/admin/AddVehicle";
+import EditVehicle from "./pages/admin/EditVehicle";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CurrentPageProvider from "./context/CurrentPage";
 import InventoryProvider from "./context/Inventory";
@@ -32,6 +35,30 @@ function App() {
                                     element={
                                         <ProtectedRoute>
                                             <Admin/>
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/admin/inventory"
+                                    element={
+                                        <ProtectedRoute>
+                                            <AdminInventory/>
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/admin/vehicles/add"
+                                    element={
+                                        <ProtectedRoute>
+                                            <AddVehicle/>
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/admin/vehicles/:id/edit"
+                                    element={
+                                        <ProtectedRoute>
+                                            <EditVehicle/>
                                         </ProtectedRoute>
                                     }
                                 />

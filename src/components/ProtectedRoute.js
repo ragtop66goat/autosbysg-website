@@ -1,17 +1,12 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/Auth";
+import LoadingSpinner from "./LoadingSpinner";
 
 function ProtectedRoute({ children }) {
   const { user, loading, isAdmin } = useAuth();
 
   if (loading) {
-    return (
-      <div className="container mt-5 text-center">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (!user || !isAdmin(user.email)) {

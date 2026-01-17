@@ -1,5 +1,5 @@
 import { useAuth } from "../../context/Auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Admin.css";
 
 function Admin() {
@@ -37,17 +37,19 @@ function Admin() {
             <div className="welcome-card">
               <h3>Welcome to the Admin Panel</h3>
               <p className="text-muted">
-                This is a placeholder for the admin dashboard. Future features will include:
+                Manage your dealership from this dashboard.
               </p>
+              <div className="admin-actions">
+                <Link to="/admin/inventory" className="btn btn-primary btn-lg">
+                  Manage Inventory
+                </Link>
+              </div>
+              <h4 className="mt-4">Quick Actions</h4>
               <ul>
-                <li>Manage vehicle inventory (Add, Edit, Delete)</li>
-                <li>Upload vehicle images</li>
-                <li>Update pricing and availability status</li>
-                <li>View customer inquiries</li>
+                <li>View, add, edit, and delete vehicles</li>
+                <li>Update pricing and vehicle details</li>
+                <li>Manage vehicle images and features</li>
               </ul>
-              <p className="text-muted mt-3">
-                <strong>Coming soon!</strong> Full CRUD operations for inventory management.
-              </p>
             </div>
           </div>
         </div>

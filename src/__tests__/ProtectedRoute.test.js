@@ -88,7 +88,7 @@ describe("ProtectedRoute Component", () => {
   it("should render protected content when user is admin", async () => {
     const adminUser = {
       uid: "admin-uid",
-      email: "admin@sgautosales.com",
+      email: "shyguythe13th@gmail.com",
     };
 
     mockOnAuthStateChanged.mockImplementation((auth, callback) => {
@@ -103,20 +103,21 @@ describe("ProtectedRoute Component", () => {
     expect(screen.queryByText("Login Page")).not.toBeInTheDocument();
   });
 
-  it("should accept admin with owner email", async () => {
-    const ownerUser = {
-      uid: "owner-uid",
-      email: "owner@sgautosales.com",
+  it("should reject non-whitelisted admin emails", async () => {
+    const nonWhitelistedUser = {
+      uid: "user-uid",
+      email: "admin@sgautosales.com",
     };
 
     mockOnAuthStateChanged.mockImplementation((auth, callback) => {
-      callback(ownerUser);
+      callback(nonWhitelistedUser);
       return jest.fn();
     });
 
     renderProtectedRoute();
 
-    await screen.findByText("Admin Dashboard");
-    expect(screen.getByText("Admin Dashboard")).toBeInTheDocument();
+    await screen.findByText("Login Page");
+    expect(screen.getByText("Login Page")).toBeInTheDocument();
+    expect(screen.queryByText("Admin Dashboard")).not.toBeInTheDocument();
   });
 });

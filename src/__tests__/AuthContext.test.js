@@ -100,17 +100,17 @@ describe("AuthContext", () => {
     const { result } = renderHook(() => useAuth(), { wrapper });
 
     // Test with admin email
-    expect(result.current.isAdmin("admin@sgautosales.com")).toBe(true);
-    expect(result.current.isAdmin("owner@sgautosales.com")).toBe(true);
+    expect(result.current.isAdmin("shyguythe13th@gmail.com")).toBe(true);
 
     // Test with non-admin email
     expect(result.current.isAdmin("customer@gmail.com")).toBe(false);
+    expect(result.current.isAdmin("admin@sgautosales.com")).toBe(false);
     expect(result.current.isAdmin(null)).toBe(false);
   });
 
   it("should update user state when auth state changes", async () => {
     const { onAuthStateChanged } = require("firebase/auth");
-    const mockUser = { uid: "test-uid", email: "admin@sgautosales.com" };
+    const mockUser = { uid: "test-uid", email: "shyguythe13th@gmail.com" };
 
     let authCallback;
     onAuthStateChanged.mockImplementation((auth, callback) => {
