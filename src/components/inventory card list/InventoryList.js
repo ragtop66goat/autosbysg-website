@@ -1,29 +1,39 @@
 import InventoryCard from "../inventory card/InventoryCard";
-import {Container} from "react-bootstrap";
-import {useContext, useEffect} from "react";
-import {InventoryContext} from "../../context/Inventory";
+import { Container } from "react-bootstrap";
+import { useContext, useEffect } from "react";
+import { InventoryContext } from "../../context/Inventory";
 
-function InventoryList() {
+function InventoryList({ inventory: inventoryProp }) {
+  const inventoryContext = useContext(InventoryContext);
+  const getInventoryData = () => inventoryContext.getInventoryData();
+  const contextInventory = inventoryContext.inventory;
 
-    const inventoryContext = useContext(InventoryContext);
-    const getInventoryData = () => inventoryContext.getInventoryData();
-    const inventory = inventoryContext.inventory;
+  const inventory =
+    inventoryProp !== undefined ? inventoryProp : contextInventory;
 
-    useEffect(() => {
+  useEffect(() => {
+    if (inventoryProp === undefined) {
       getInventoryData();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return (
-        <Container>
-            <h1 className="m-5">Inventory</h1>
-            <div className="row row-cols-2 row-cols-md-4 g-4">
-                {inventory.map((item, idx) => (
-                    <InventoryCard key={idx} item={item}/>
-                ))}
-            </div>
-        </Container>
-    )
+  return (
+    <Container>
+      <h1 className="m-5">Inventory</h1>
+      <div className="row row-cols-2 row-cols-md-4 g-4">
+        {inventory.length > 0 ? (
+          inventory.map((item, idx) => <InventoryCard key={idx} item={item} />)
+        ) : (
+          <div className="col-12">
+            <p className="text-center text-muted">
+              No vehicles found matching your criteria.
+            </p>
+          </div>
+        )}
+      </div>
+    </Container>
+  );
 }
 
-export default InventoryList
+export default InventoryList;
