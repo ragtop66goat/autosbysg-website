@@ -3,6 +3,13 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import ImageUpload from "../components/ImageUpload";
 import "@testing-library/jest-dom/extend-expect";
 
+// Mock Firebase
+jest.mock("../config/firebase", () => ({
+  auth: {},
+  db: {},
+  storage: {},
+}));
+
 // Mock URL.createObjectURL
 global.URL.createObjectURL = jest.fn(() => "mock-object-url");
 global.URL.revokeObjectURL = jest.fn();
