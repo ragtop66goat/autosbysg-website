@@ -20,6 +20,15 @@ jest.mock("../config/firebase", () => ({
   storage: {},
 }));
 
+jest.mock("firebase/auth", () => ({
+  signInWithEmailAndPassword: jest.fn(),
+  signOut: jest.fn(),
+  onAuthStateChanged: jest.fn((auth, callback) => {
+    callback(null);
+    return jest.fn();
+  }),
+}));
+
 describe("App Component Tests", () => {
   it("should render Hero, NavBar, and Footer components", () => {
     render(<App />);
