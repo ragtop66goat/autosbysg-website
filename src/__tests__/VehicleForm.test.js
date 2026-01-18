@@ -3,6 +3,20 @@ import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import VehicleForm from "../components/VehicleForm";
 
+// Mock Firebase
+jest.mock("../config/firebase", () => ({
+  auth: {},
+  db: {},
+  storage: {},
+}));
+
+// Mock image upload utilities
+jest.mock("../utils/imageUpload", () => ({
+  uploadVehicleImage: jest.fn(),
+  generateImageId: jest.fn(() => "mock-uuid"),
+  isValidImageFile: jest.fn(() => true),
+}));
+
 const mockOnSubmit = jest.fn();
 const mockOnCancel = jest.fn();
 
