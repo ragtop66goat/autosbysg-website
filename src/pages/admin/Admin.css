@@ -1,0 +1,74 @@
+.admin-page {
+  min-height: 80vh;
+  background-color: #f8f9fa;
+  padding-bottom: 3rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header h1 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.welcome-card ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.welcome-card li {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.admin-actions {
+  margin: 1.5rem 0;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-user-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
