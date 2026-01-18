@@ -1,49 +1,54 @@
-import React from 'react';
-import {render, screen} from "@testing-library/react";
-import {InventoryContext, InventoryProvider} from "../context/Inventory";
-import '@testing-library/jest-dom/extend-expect';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { InventoryContext, InventoryProvider } from "../context/Inventory";
+import "@testing-library/jest-dom/extend-expect";
 
 // mock firebase and its functions
-jest.mock('firebase/firestore', () => ({
+jest.mock("firebase/firestore", () => ({
   collection: jest.fn(),
   getDocs: jest.fn(),
   addDoc: jest.fn(),
   updateDoc: jest.fn(),
   deleteDoc: jest.fn(),
   doc: jest.fn(),
-  getFirestore: jest.fn()
+  getFirestore: jest.fn(),
 }));
 
+jest.mock("../config/firebase", () => ({
+  auth: {},
+  db: {},
+  storage: {},
+}));
 
-describe('Inventory Context tests', () => {
-
+describe("Inventory Context tests", () => {
   const mockContextValue = {
     inventory: [],
-    getInventoryData: jest.fn()
-  }
+    getInventoryData: jest.fn(),
+  };
 
-// mock child component
+  // mock child component
   const MockChild = () => {
-    const {inventory, getInventoryData} = React.useContext(InventoryContext);
+    const { inventory, getInventoryData } = React.useContext(InventoryContext);
 
     return (
       <div>
         <span data-testid="inventory-length">{inventory.length}</span>
-        <button onClick={getInventoryData} data-testid="get-inventory-data">Get Inventory Data</button>
+        <button onClick={getInventoryData} data-testid="get-inventory-data">
+          Get Inventory Data
+        </button>
       </div>
-    )
-  }
+    );
+  };
 
-
-  test('renders InventoryProvider without errors', () => {
+  test("renders InventoryProvider without errors", () => {
     render(
       <InventoryProvider>
-        <MockChild/>
+        <MockChild />
       </InventoryProvider>
-    )
-  })
+    );
+  });
 
-  test('provides the correct context value', () => {
+  test("provides the correct context value", () => {
     render(
       <InventoryProvider>
         <InventoryContext.Consumer>
@@ -55,52 +60,57 @@ describe('Inventory Context tests', () => {
           )}
         </InventoryContext.Consumer>
       </InventoryProvider>
-    )
+    );
 
     const length = screen.getByTestId("data-length");
     expect(length.textContent).toBe("0");
-  })
+  });
 
-  test('provides addVehicle function in context', () => {
+  test("provides addVehicle function in context", () => {
     render(
       <InventoryProvider>
         <InventoryContext.Consumer>
           {(value) => (
-            <div data-testid="has-add">{typeof value.addVehicle === 'function' ? 'yes' : 'no'}</div>
+            <div data-testid="has-add">
+              {typeof value.addVehicle === "function" ? "yes" : "no"}
+            </div>
           )}
         </InventoryContext.Consumer>
       </InventoryProvider>
-    )
+    );
 
     expect(screen.getByTestId("has-add").textContent).toBe("yes");
-  })
+  });
 
-  test('provides updateVehicle function in context', () => {
+  test("provides updateVehicle function in context", () => {
     render(
       <InventoryProvider>
         <InventoryContext.Consumer>
           {(value) => (
-            <div data-testid="has-update">{typeof value.updateVehicle === 'function' ? 'yes' : 'no'}</div>
+            <div data-testid="has-update">
+              {typeof value.updateVehicle === "function" ? "yes" : "no"}
+            </div>
           )}
         </InventoryContext.Consumer>
       </InventoryProvider>
-    )
+    );
 
     expect(screen.getByTestId("has-update").textContent).toBe("yes");
-  })
+  });
 
-  test('provides deleteVehicle function in context', () => {
+  test("provides deleteVehicle function in context", () => {
     render(
       <InventoryProvider>
         <InventoryContext.Consumer>
           {(value) => (
-            <div data-testid="has-delete">{typeof value.deleteVehicle === 'function' ? 'yes' : 'no'}</div>
+            <div data-testid="has-delete">
+              {typeof value.deleteVehicle === "function" ? "yes" : "no"}
+            </div>
           )}
         </InventoryContext.Consumer>
       </InventoryProvider>
-    )
+    );
 
     expect(screen.getByTestId("has-delete").textContent).toBe("yes");
-  })
-
-})
+  });
+});

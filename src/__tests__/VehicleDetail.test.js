@@ -22,6 +22,12 @@ const mockContextValue = {
   getInventoryData: jest.fn(),
 };
 
+jest.mock("../config/firebase", () => ({
+  auth: {},
+  db: {},
+  storage: {},
+}));
+
 const renderWithRouter = (
   component,
   { route = "/inventory/test-vehicle-1" } = {}
