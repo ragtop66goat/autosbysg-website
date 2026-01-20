@@ -1,0 +1,5 @@
+{
+  "jest.jestCommandLine": "npm test --",
+  "jestrunner.jestCommand": "npm test --",
+  "jest.autoRun": "off"
+}

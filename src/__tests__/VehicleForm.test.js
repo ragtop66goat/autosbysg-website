@@ -1,7 +1,8 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import VehicleForm from "../components/VehicleForm";
+import userEvent from "@testing-library/user-event";
 
 // Mock Firebase
 jest.mock("../config/firebase", () => ({
@@ -46,7 +47,9 @@ describe("VehicleForm Component", () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByRole("heading", { name: /add vehicle/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /add vehicle/i })
+    ).toBeInTheDocument();
   });
 
   it("should display 'Edit Vehicle' heading when initial data provided", () => {
@@ -68,7 +71,9 @@ describe("VehicleForm Component", () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByRole("heading", { name: /edit vehicle/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /edit vehicle/i })
+    ).toBeInTheDocument();
   });
 
   it("should populate form with initial data", () => {
@@ -104,7 +109,7 @@ describe("VehicleForm Component", () => {
     );
 
     const titleInput = screen.getByLabelText(/title/i);
-    fireEvent.change(titleInput, { target: { value: "2021 Toyota Camry" } });
+    userEvent.type(titleInput, "2021 Toyota Camry");
 
     expect(titleInput.value).toBe("2021 Toyota Camry");
   });
@@ -120,25 +125,21 @@ describe("VehicleForm Component", () => {
 
     render(
       <BrowserRouter>
-        <VehicleForm onSubmit={mockOnSubmit} onCancel={mockOnCancel} initialData={initialData} />
+        <VehicleForm
+          onSubmit={mockOnSubmit}
+          onCancel={mockOnCancel}
+          initialData={initialData}
+        />
       </BrowserRouter>
     );
 
-    fireEvent.change(screen.getByLabelText(/title/i), {
-      target: { value: "2021 Toyota Camry" },
-    });
-    fireEvent.change(screen.getByLabelText(/price/i), {
-      target: { value: "28000" },
-    });
-    fireEvent.change(screen.getByLabelText(/mileage/i), {
-      target: { value: "15000" },
-    });
-    fireEvent.change(screen.getByLabelText(/engine/i), {
-      target: { value: "2.5L I-4" },
-    });
+    userEvent.type(screen.getByLabelText(/title/i), "2021 Toyota Camry");
+    userEvent.type(screen.getByLabelText(/price/i), "28000");
+    userEvent.type(screen.getByLabelText(/mileage/i), "15000");
+    userEvent.type(screen.getByLabelText(/engine/i), "2.5L I-4");
 
     const submitButton = screen.getByRole("button", { name: /save/i });
-    fireEvent.click(submitButton);
+    userEvent.click(submitButton);
 
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -160,7 +161,7 @@ describe("VehicleForm Component", () => {
     );
 
     const cancelButton = screen.getByRole("button", { name: /cancel/i });
-    fireEvent.click(cancelButton);
+    userEvent.click(cancelButton);
 
     expect(mockOnCancel).toHaveBeenCalled();
   });
@@ -173,7 +174,7 @@ describe("VehicleForm Component", () => {
     );
 
     const submitButton = screen.getByRole("button", { name: /save/i });
-    fireEvent.click(submitButton);
+    userEvent.click(submitButton);
 
     const titleInput = screen.getByLabelText(/title/i);
     expect(titleInput).toBeRequired();
@@ -194,16 +195,19 @@ describe("VehicleForm Component", () => {
 
     render(
       <BrowserRouter>
-        <VehicleForm onSubmit={slowSubmit} onCancel={mockOnCancel} initialData={initialData} />
+        <VehicleForm
+          onSubmit={slowSubmit}
+          onCancel={mockOnCancel}
+          initialData={initialData}
+        />
       </BrowserRouter>
     );
 
-    fireEvent.change(screen.getByLabelText(/title/i), {
-      target: { value: "Test Vehicle" },
-    });
+    const titleInput = screen.getByLabelText(/title/i);
+    userEvent.type(titleInput, "Test Vehicle");
 
     const submitButton = screen.getByRole("button", { name: /save/i });
-    fireEvent.click(submitButton);
+    userEvent.click(submitButton);
 
     await waitFor(() => {
       expect(screen.getByText(/saving/i)).toBeInTheDocument();

@@ -1,6 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import SearchFilterBar from "../components/search-filter-bar/SearchFilterBar";
+import userEvent from "@testing-library/user-event";
 
 describe("SearchFilterBar Component", () => {
   const mockOnFilterChange = jest.fn();
@@ -30,10 +31,10 @@ describe("SearchFilterBar Component", () => {
     );
 
     const searchInput = screen.getByPlaceholderText(/search/i);
-    fireEvent.change(searchInput, { target: { value: "Honda" } });
+    userEvent.type(searchInput, "H");
 
     expect(mockOnFilterChange).toHaveBeenCalledWith(
-      expect.objectContaining({ searchTerm: "Honda" })
+      expect.objectContaining({ searchTerm: "H" })
     );
   });
 
@@ -58,7 +59,7 @@ describe("SearchFilterBar Component", () => {
     );
 
     const minPriceInput = screen.getByLabelText(/min price/i);
-    fireEvent.change(minPriceInput, { target: { value: "5000" } });
+    userEvent.type(minPriceInput, "5000");
 
     expect(mockOnFilterChange).toHaveBeenCalledWith(
       expect.objectContaining({ minPrice: "5000" })
@@ -85,7 +86,7 @@ describe("SearchFilterBar Component", () => {
     );
 
     const maxMileageInput = screen.getByLabelText(/max mileage/i);
-    fireEvent.change(maxMileageInput, { target: { value: "100000" } });
+    userEvent.type(maxMileageInput, "100000");
 
     expect(mockOnFilterChange).toHaveBeenCalledWith(
       expect.objectContaining({ maxMileage: "100000" })
@@ -113,7 +114,7 @@ describe("SearchFilterBar Component", () => {
     );
 
     const clearButton = screen.getByText(/clear filters/i);
-    fireEvent.click(clearButton);
+    userEvent.click(clearButton);
 
     expect(mockOnClearFilters).toHaveBeenCalled();
   });

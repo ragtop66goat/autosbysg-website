@@ -1,11 +1,14 @@
-import React from 'react';
-import {render, fireEvent, screen} from "@testing-library/react";
-import {CurrentPageContext, CurrentPageProvider} from "../context/CurrentPage";
-import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from "@testing-library/react";
+import {
+  CurrentPageContext,
+  CurrentPageProvider,
+} from "../context/CurrentPage";
+import "@testing-library/jest-dom/extend-expect";
+import userEvent from "@testing-library/user-event";
 
-describe('Current Page Context tests', () => {
+describe("Current Page Context tests", () => {
   // Test if the component renders without crashing
-  test('renders CurrentPageProvider without errors', () => {
+  test("renders CurrentPageProvider without errors", () => {
     render(
       <CurrentPageProvider>
         <div>Test Content</div>
@@ -13,22 +16,22 @@ describe('Current Page Context tests', () => {
     );
   });
 
-// Test if the context value is set correctly
-  test('provides the correct context value', () => {
-     render(
+  // Test if the context value is set correctly
+  test("provides the correct context value", () => {
+    render(
       <CurrentPageProvider>
         <CurrentPageContext.Consumer>
-          {value => <div>{value.page}</div>}
+          {(value) => <div>{value.page}</div>}
         </CurrentPageContext.Consumer>
       </CurrentPageProvider>
     );
 
-    const testContent = screen.getByText('0'); // Assuming the initial page is 0
+    const testContent = screen.getByText("0"); // Assuming the initial page is 0
     expect(testContent).toBeInTheDocument();
   });
 
-// Test if setPage function updates the context value
-  test('setPage updates the context value', () => {
+  // Test if setPage function updates the context value
+  test("setPage updates the context value", () => {
     render(
       <CurrentPageProvider>
         <CurrentPageContext.Consumer>
@@ -42,12 +45,10 @@ describe('Current Page Context tests', () => {
       </CurrentPageProvider>
     );
 
-    const updateButton = screen.getByText('Update Page');
+    const updateButton = screen.getByText("Update Page");
 
-    fireEvent.click(updateButton);
+    userEvent.click(updateButton);
 
     expect(screen.getByTestId("page").textContent).toBe("1");
-
   });
-})
-
+});

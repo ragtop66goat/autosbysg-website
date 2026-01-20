@@ -1,5 +1,5 @@
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import AdminInventory from "../pages/admin/AdminInventory";
 import { InventoryContext } from "../context/Inventory";
@@ -106,14 +106,14 @@ describe("AdminInventory Component", () => {
   test("navigates to add vehicle page when Add Vehicle clicked", () => {
     renderWithContext();
     const addButton = screen.getByText("Add Vehicle");
-    fireEvent.click(addButton);
+    userEvent.click(addButton);
     expect(mockNavigate).toHaveBeenCalledWith("/admin/vehicles/add");
   });
 
   test("navigates to edit page when Edit button clicked", () => {
     renderWithContext();
     const editButtons = screen.getAllByText("Edit");
-    fireEvent.click(editButtons[0]);
+    userEvent.click(editButtons[0]);
     expect(mockNavigate).toHaveBeenCalledWith("/admin/vehicles/1/edit");
   });
 
@@ -121,7 +121,7 @@ describe("AdminInventory Component", () => {
     global.confirm = jest.fn(() => false);
     renderWithContext();
     const deleteButtons = screen.getAllByText("Delete");
-    fireEvent.click(deleteButtons[0]);
+    userEvent.click(deleteButtons[0]);
     expect(global.confirm).toHaveBeenCalledWith(
       "Are you sure you want to delete this vehicle?"
     );
@@ -132,10 +132,20 @@ describe("AdminInventory Component", () => {
     mockDeleteVehicle.mockResolvedValue();
     renderWithContext();
     const deleteButtons = screen.getAllByText("Delete");
-    fireEvent.click(deleteButtons[0]);
+
+    await act(async () => {
+      userEvent.click(deleteButtons[0]);
+      // Wait for the async handler to complete
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
 
     await waitFor(() => {
       expect(mockDeleteVehicle).toHaveBeenCalledWith("1");
+    });
+
+    // Wait for the finally block to complete (setDeletingId(null))
+    await waitFor(() => {
+      expect(screen.queryByText("Deleting...")).not.toBeInTheDocument();
     });
   });
 
@@ -143,7 +153,7 @@ describe("AdminInventory Component", () => {
     global.confirm = jest.fn(() => false);
     renderWithContext();
     const deleteButtons = screen.getAllByText("Delete");
-    fireEvent.click(deleteButtons[0]);
+    userEvent.click(deleteButtons[0]);
     expect(mockDeleteVehicle).not.toHaveBeenCalled();
   });
 
@@ -164,11 +174,23 @@ describe("AdminInventory Component", () => {
 
     renderWithContext();
     const deleteButtons = screen.getAllByText("Delete");
-    fireEvent.click(deleteButtons[0]);
 
+    // Click to trigger delete
+    await act(async () => {
+      userEvent.click(deleteButtons[0]);
+      // Give React time to process the click
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
+
+    // Check for loading state
     await waitFor(() => {
       expect(screen.getByText("Deleting...")).toBeInTheDocument();
     });
+
+    // Wait for the delete operation and finally block to complete
+    await waitFor(() => {
+      expect(screen.queryByText("Deleting...")).not.toBeInTheDocument();
+    }, { timeout: 3000 });
   });
 
   test("displays vehicle thumbnail image", () => {
