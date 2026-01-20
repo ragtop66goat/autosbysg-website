@@ -1,7 +1,7 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ImageUpload from "../components/ImageUpload";
 import "@testing-library/jest-dom/extend-expect";
+import userEvent from "@testing-library/user-event";
 
 // Mock Firebase
 jest.mock("../config/firebase", () => ({
@@ -71,7 +71,7 @@ describe("ImageUpload Component", () => {
     });
     const input = screen.getByLabelText("Choose Image");
 
-    fireEvent.change(input, { target: { files: [file] } });
+    userEvent.upload(input, file);
 
     expect(mockOnImageSelect).toHaveBeenCalledWith(file);
     expect(URL.createObjectURL).toHaveBeenCalledWith(file);
@@ -85,10 +85,12 @@ describe("ImageUpload Component", () => {
     });
     const input = screen.getByLabelText("Choose Image");
 
-    fireEvent.change(input, { target: { files: [file] } });
+    userEvent.upload(input, file);
 
     expect(
-      screen.getByText("Invalid file type. Please upload a JPG, PNG, or WebP image.")
+      screen.getByText(
+        "Invalid file type. Please upload a JPG, PNG, or WebP image."
+      )
     ).toBeInTheDocument();
     expect(mockOnImageSelect).toHaveBeenCalledWith(null);
   });
@@ -102,10 +104,12 @@ describe("ImageUpload Component", () => {
     });
     const input = screen.getByLabelText("Choose Image");
 
-    fireEvent.change(input, { target: { files: [file] } });
+    userEvent.upload(input, file);
 
     expect(
-      screen.getByText("File size too large. Please upload an image smaller than 5MB.")
+      screen.getByText(
+        "File size too large. Please upload an image smaller than 5MB."
+      )
     ).toBeInTheDocument();
     expect(mockOnImageSelect).toHaveBeenCalledWith(null);
   });
@@ -132,7 +136,7 @@ describe("ImageUpload Component", () => {
     );
 
     const removeButton = screen.getByText("Remove");
-    fireEvent.click(removeButton);
+    userEvent.click(removeButton);
 
     expect(mockOnImageSelect).toHaveBeenCalledWith(null);
   });
