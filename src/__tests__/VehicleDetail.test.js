@@ -1,8 +1,9 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import VehicleDetail from "../pages/vehicle-detail/VehicleDetail";
 import { InventoryContext } from "../context/Inventory";
+import userEvent from "@testing-library/user-event";
 
 const mockVehicle = {
   id: "test-vehicle-1",
@@ -105,7 +106,7 @@ describe("VehicleDetail Component", () => {
 
     await waitFor(() => {
       const contactButton = screen.getByText("Contact About This Vehicle");
-      fireEvent.click(contactButton);
+      userEvent.click(contactButton);
     });
 
     expect(screen.getByLabelText(/Name \*/i)).toBeInTheDocument();
@@ -119,11 +120,11 @@ describe("VehicleDetail Component", () => {
 
     await waitFor(() => {
       const contactButton = screen.getByText("Contact About This Vehicle");
-      fireEvent.click(contactButton);
+      userEvent.click(contactButton);
     });
 
     const hideButton = screen.getByText("Hide Contact Form");
-    fireEvent.click(hideButton);
+    userEvent.click(hideButton);
 
     expect(screen.queryByLabelText(/Name \*/i)).not.toBeInTheDocument();
   });
@@ -134,16 +135,16 @@ describe("VehicleDetail Component", () => {
 
     await waitFor(() => {
       const contactButton = screen.getByText("Contact About This Vehicle");
-      fireEvent.click(contactButton);
+      userEvent.click(contactButton);
     });
 
     const nameInput = screen.getByLabelText(/Name \*/i);
     const emailInput = screen.getByLabelText(/Email \*/i);
     const submitButton = screen.getByText("Send Message");
 
-    fireEvent.change(nameInput, { target: { value: "John Doe" } });
-    fireEvent.change(emailInput, { target: { value: "john@example.com" } });
-    fireEvent.click(submitButton);
+    userEvent.type(nameInput, "John Doe");
+    userEvent.type(emailInput, "john@example.com");
+    userEvent.click(submitButton);
 
     await waitFor(() => {
       expect(window.alert).toHaveBeenCalledWith(
@@ -181,7 +182,7 @@ describe("VehicleDetail Component", () => {
     });
 
     const thumbnails = screen.getAllByAltText(/view/i);
-    fireEvent.click(thumbnails[1]);
+    userEvent.click(thumbnails[1]);
 
     await waitFor(() => {
       const images = screen.getAllByAltText("2020 Honda Accord");
@@ -225,7 +226,7 @@ describe("VehicleDetail Component", () => {
 
     await waitFor(() => {
       const contactButton = screen.getByText("Contact About This Vehicle");
-      fireEvent.click(contactButton);
+      userEvent.click(contactButton);
     });
 
     const nameInput = screen.getByLabelText(/Name \*/i);
@@ -233,10 +234,10 @@ describe("VehicleDetail Component", () => {
     const phoneInput = screen.getByLabelText(/Phone Number/i);
     const messageInput = screen.getByLabelText(/Message/i);
 
-    fireEvent.change(nameInput, { target: { value: "Jane Smith" } });
-    fireEvent.change(emailInput, { target: { value: "jane@example.com" } });
-    fireEvent.change(phoneInput, { target: { value: "555-1234" } });
-    fireEvent.change(messageInput, { target: { value: "Test message" } });
+    userEvent.type(nameInput, "Jane Smith");
+    userEvent.type(emailInput, "jane@example.com");
+    userEvent.type(phoneInput, "555-1234");
+    userEvent.type(messageInput, "Test message");
 
     expect(nameInput.value).toBe("Jane Smith");
     expect(emailInput.value).toBe("jane@example.com");

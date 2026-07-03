@@ -1,11 +1,12 @@
 # S-G Auto Sales
 
 This project is built with React and Styled with BootStrap and CSS. It uses:
-* Context for state management.
-* Google Firebase and Firestore for data and image CRUD operations
-* Jest as a testing suite
-* GitHub Actions to store all secrets and deploy directly to Netlify.
-* All tests are run in the "Run Test Coverage" action, and the coverage report is printed in the console.
+
+- Context for state management.
+- Google Firebase and Firestore for data and image CRUD operations
+- Jest as a testing suite
+- GitHub Actions to store all secrets and deploy directly to Netlify.
+- All tests are run in the "Run Test Coverage" action, and the coverage report is printed in the console.
 
 ## Available Scripts
 
@@ -27,6 +28,18 @@ Launches the test runner in the interactive watch mode.\
 
 Launches the test runner in the interactive watch mode and populates the coverage directory with the test coverage file
 
+### `npm test -- Login.test.js`
+
+Run a specific test file
+
+### `npm test -- --testNamePattern="renders login form"`
+
+Run tests matching a pattern
+
+### `npm test -- Login.test.js --verbose`
+
+Run specific test file with verbose output
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -40,7 +53,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
 
 ### `npm run build` fails to minify
 
